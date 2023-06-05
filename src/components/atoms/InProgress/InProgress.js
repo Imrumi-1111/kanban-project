@@ -13,11 +13,9 @@ export function InProgress() {
     function handleChange(e){
        let datum= e.target.value
        setWorkinProgress(datum)
-       
-       
-       
-
-    }
+     
+ }
+ 
     function handleToDelete(indexNum){
       const filteredData=lis.filter((ele,index)=>index!==indexNum);
         setLis(filteredData);
@@ -35,16 +33,33 @@ export function InProgress() {
       }
       else if(lis.includes(workinProgress)){
         alert("Already")
+        setWorkinProgress("")
       }
       else{const data=[workinProgress,...lis]
       setLis(data)
       setWorkinProgress("")
       localStorage.setItem("Task_In_Progress",data)
-      }
-      
-      //
-      
+      }   
 
+    }
+    function handleEnter(e){
+      if(e.keyCode===13){
+        if(workinProgress===""){
+          alert("Write the Task Please")
+          setWorkinProgress("")
+        }
+        else if(lis.includes(workinProgress)){
+          alert("Already")
+          setWorkinProgress("")
+        }
+        else{const data=[workinProgress,...lis]
+        setLis(data)
+        setWorkinProgress("")
+        localStorage.setItem("Task_In_Progress",data)
+        }   
+  
+
+      }
     }
   return (
     <div className={styles.main} >
@@ -57,7 +72,7 @@ export function InProgress() {
       </div>
 
         <div >
-                <input className={styles.field} type='text' onChange={handleChange} value={workinProgress} placeholder='    + Add Task'></input>
+                <input className={styles.field} type='text' onChange={handleChange} value={workinProgress} onKeyDown={handleEnter} placeholder='    + Add Task'></input>
                 <button onClick={handleAdd} className={styles.addbutton}> <BiCommentAdd/></button>
         </div>
         <span className={styles.taskContainer}>
