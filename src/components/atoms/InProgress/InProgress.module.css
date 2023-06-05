@@ -55,6 +55,7 @@
     display: flex;
     flex-direction: column;
     width:20rem;
+    border-radius: .5rem;
 }
 /* .singleTask:nth-child(1){
     background-color: yellow;

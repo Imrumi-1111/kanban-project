@@ -29,12 +29,15 @@ export function InProgress() {
       setWantToSeeList(!wantToSeeList)
     }
     function handleAdd(){
-      if(lis.includes(workinProgress)){
+      if(workinProgress===""){
+        alert("Write the Task Please")
+        setWorkinProgress("")
+      }
+      else if(lis.includes(workinProgress)){
         alert("Already")
       }
       else{const data=[workinProgress,...lis]
       setLis(data)
-      console.log(workinProgress)
       setWorkinProgress("")
       localStorage.setItem("Task_In_Progress",data)
       }
@@ -44,7 +47,7 @@ export function InProgress() {
 
     }
   return (
-    <div >
+    <div className={styles.main} >
       
      { !wantToSeeList ?<button className={styles.bluffbutton} onClick={handleToView}>Add a List</button>:
      <div className={styles.container}>
