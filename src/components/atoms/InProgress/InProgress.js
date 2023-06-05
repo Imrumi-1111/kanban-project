@@ -3,6 +3,8 @@ import styles from "./InProgress.module.css"
 import {SlOptions} from "react-icons/sl"
 import {RiDeleteBin5Fill} from "react-icons/ri"
 import {BiCommentAdd} from "react-icons/bi" 
+import {GiProgression} from "react-icons/gi"
+import { ClockLoader } from 'react-spinners'
 
 
 export function InProgress() {
@@ -64,10 +66,15 @@ export function InProgress() {
   return (
     <div className={styles.main} >
       
-     { !wantToSeeList ?<button className={styles.bluffbutton} onClick={handleToView}>Add a List</button>:
+     { !wantToSeeList ?<div className={styles.bluff_container}>
+     <button className={styles.bluffbutton} onClick={handleToView}>Add a List</button>
+     <br/>
+     <ClockLoader color="#36d7b7"  />
+     </div>
+     :
      <div className={styles.container}>
         <div className={styles.container1}>    
-      <p>In Progress</p>
+      <p>In Progress <GiProgression/></p>
       <button className={styles.moreoption}><SlOptions/></button>
       </div>
 
