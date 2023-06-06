@@ -69,7 +69,7 @@ export function InProgress() {
      { !wantToSeeList ?<div className={styles.bluff_container}>
      <button className={styles.bluffbutton} onClick={handleToView}>Add a List</button>
      <br/>
-     <ClockLoader color="#36d7b7"  />
+     <ClockLoader color="#36d7b7" className={styles.clock} />
      </div>
      :
      <div className={styles.container}>

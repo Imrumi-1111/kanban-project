@@ -167,6 +167,19 @@ box-shadow: 0 0 5px cyan,
 0 0 25px cyan, 0 0 50px cyan,
 0 0 100px cyan, 0 0 200px cyan;
 } */
+.clock:hover{
+    animation: .8s enlarg ease infinite;
+
+}
+@keyframes enlarg{
+    0% {
+        transform:scale(1.2);
+      } 50% {
+        transform: scale(1.5);
+      } 100% {
+        transform: rotate(1.2);
+      }
+}
 .singleTaskContainer:nth-child(1){
     margin-top:1rem;
     background-color: pink;
