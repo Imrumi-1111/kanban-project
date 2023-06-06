@@ -10,6 +10,7 @@
     opacity: 1;
     transform: scale(1.2);
     transition: 1s;
+    
 
 }
 .field{
@@ -145,9 +146,27 @@
     border: none;
     background-color: transparent;
     
+}
+@keyframes rot {
+    0% {
+      transform: rotate(-25deg);
+    } 50% {
+      transform: rotate(25deg);
+    } 100% {
+      transform: rotate(-25deg);
+    }
+}
+.delButton:hover{
+    animation: .8s rot ease infinite;
+    cursor:grab ;
     
     
 }
+/* .delButton:hover{
+box-shadow: 0 0 5px cyan,
+0 0 25px cyan, 0 0 50px cyan,
+0 0 100px cyan, 0 0 200px cyan;
+} */
 .singleTaskContainer:nth-child(1){
     margin-top:1rem;
     background-color: pink;
