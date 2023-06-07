@@ -12,6 +12,7 @@ import Cool from './components/organisms/details/details';
 function App() {
   return(
     <div>
+      {/* <Cool/> */}
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Main/>}/>
