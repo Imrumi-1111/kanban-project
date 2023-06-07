@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from "./InProgress.module.css";
 import { SlOptions } from "react-icons/sl";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { GrEdit } from 'react-icons/gr'
 import { BiCommentAdd } from "react-icons/bi";
 import { ClockLoader } from 'react-spinners';
 import { GiProgression } from "react-icons/gi";
@@ -126,12 +127,10 @@ export default function InProgress({ item }) {
                   ) : (
                     <>
                       <p className={styles.singleTask}>{ele}</p>
-                      <button
+                      <GrEdit
                         onClick={() => handleEdit(index)}
-                        className={styles.delButton}
-                      >
-                        Edit
-                      </button>
+                        className={styles.editButton}
+                        />
                       <button
                         onClick={() => handleToDelete(index)}
                         className={styles.delButton}
