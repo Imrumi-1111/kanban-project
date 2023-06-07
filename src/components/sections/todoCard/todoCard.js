@@ -7,8 +7,9 @@ import { BiCommentAdd } from "react-icons/bi";
 import { ClockLoader } from 'react-spinners';
 import { BsPersonWorkspace } from "react-icons/bs";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from 'react-router-dom';
 
-export default function InProgress({ item }) {
+export default function TodoCard({ item }) {
   const [wantToSeeList, setWantToSeeList] = useState(false);
   const [workinProgress, setWorkinProgress] = useState("");
   const [lis, setLis] = useState([]);
@@ -96,10 +97,12 @@ export default function InProgress({ item }) {
         <div className={styles.container}>
           <BsPersonWorkspace className={styles.logo} />
           <div className={styles.container1}>
+          <Link to="/details/item1">
             <input
               placeholder="    To Do "
               className={styles.field1}
             />
+            </Link>
             <button className={styles.moreoption}><SlOptions /></button>
           </div>
 

@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-//import { useParams } from 'react-router-dom';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import Box from '@mui/material/Box';
 import styled from '@emotion/styled';
-//import { Link } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
+
+
 
 const Component = styled.div`
 background:#F5F5F5;
@@ -29,15 +30,21 @@ const toolbarOptions = [
     ['clean']                                         // remove formatting button
   ];
 
-const Cool = () => {
-    
+const Cool = ({title}) => {
+  const { itemId } = useParams();
+  const navigate= useNavigate()
+  function handleClick(){
+  navigate("/")
+  }
+
 
 useEffect(() => {
 const quillServer = new Quill('#container',{theme:'snow',modules:{toolbar:toolbarOptions}})
 }, [])
   return (
     <div>
-       
+       <input placeholder="Details for Item ID: {itemId}" value={title}/>
+       <button onClick={handleClick}>+</button>
     <Component>
    <Box className='container' id='container'></Box>
    </Component>

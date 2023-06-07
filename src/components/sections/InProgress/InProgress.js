@@ -7,13 +7,14 @@ import { BiCommentAdd } from "react-icons/bi";
 import { ClockLoader } from 'react-spinners';
 import { GiProgression } from "react-icons/gi";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from 'react-router-dom';
 
 export default function InProgress({ item }) {
   const [wantToSeeList, setWantToSeeList] = useState(false);
   const [workinProgress, setWorkinProgress] = useState("");
   const [lis, setLis] = useState([]);
-
-  const [editingIndex, setEditingIndex] = useState("");
+  const [title, setTitle] = useState("")
+  const [editingIndex, setEditingIndex] = useState(-1);
   const [editValue, setEditValue] = useState("");
 
   function handleChange(e) {
@@ -60,9 +61,12 @@ export default function InProgress({ item }) {
       i === index ? editValue : item
     );
     setLis(editedData);
-    setEditingIndex("");
+    setEditingIndex(-1);
     setEditValue("");
     localStorage.setItem("Task_In_Progress", JSON.stringify(editedData));
+  }
+  function handleTitle(e){
+    setTitle(e.target.value)
   }
 
   function handleEnter(e) {
@@ -97,26 +101,36 @@ export default function InProgress({ item }) {
           <GiProgression className={styles.logo} />
 
           <div className={styles.container1}>
-            <input
+         
+            <input value={title}
               placeholder="    In Progress "
               className={styles.field1}
-            ></input>
+              onChange={handleTitle}
+            />
+            
+           
             <button className={styles.moreoption}>
               <SlOptions />
             </button>
+            <h1> {title}</h1>
           </div>
 
           <span className={styles.taskContainer}>
             {lis.map((ele, index) => {
               return (
+                
                 <div key={uuidv4()} className={styles.singleTaskContainer}>
+                  <Link to="/details/item2"></Link>
                   {editingIndex === index ? (
+                    
                     <>
+                     
                       <input
                         type="text"
                         value={editValue}
                         onChange={handleEditChange}
                       />
+                      
                       <button
                         onClick={() => handleEditSave(index)}
                         className={styles.delButton}

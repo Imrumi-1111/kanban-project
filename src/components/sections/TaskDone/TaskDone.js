@@ -7,6 +7,7 @@ import { BiCommentAdd } from "react-icons/bi";
 import { ClockLoader } from 'react-spinners';
 import { MdCloudDone } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from 'react-router-dom';
 
 export default function TaskDone({ item }) {
   const [wantToSeeList, setWantToSeeList] = useState(false);
@@ -97,10 +98,12 @@ export default function TaskDone({ item }) {
           <MdCloudDone className={styles.logo} />
 
           <div className={styles.container1}>
+          <Link to="/details/item3">
             <input
               placeholder="    Task Done "
               className={styles.field1}
-            ></input>
+            />
+            </Link>
             <button className={styles.moreoption}>
               <SlOptions />
             </button>
