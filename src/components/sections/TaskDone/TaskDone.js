@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from "./TaskDone.module.css";
 import { SlOptions } from "react-icons/sl";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { RiDeleteBin5Fill, RiSave3Fill } from "react-icons/ri";
 import { GrEdit } from 'react-icons/gr'
 import { BiCommentAdd } from "react-icons/bi";
 import { ClockLoader } from 'react-spinners';
@@ -119,10 +119,10 @@ export default function TaskDone({ item }) {
                         onChange={handleEditChange}
                       />
                       <button
-                        className={styles.editSaveButton}
                         onClick={() => handleEditSave(index)}
+                        className={styles.delButton}
                       >
-                        Save
+                        <RiSave3Fill/>
                       </button>
                     </>
                   ) : (

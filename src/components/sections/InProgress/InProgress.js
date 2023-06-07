@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from "./InProgress.module.css";
 import { SlOptions } from "react-icons/sl";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { RiDeleteBin5Fill, RiSave3Fill } from "react-icons/ri";
 import { GrEdit } from 'react-icons/gr'
 import { BiCommentAdd } from "react-icons/bi";
 import { ClockLoader } from 'react-spinners';
@@ -13,7 +13,7 @@ export default function InProgress({ item }) {
   const [workinProgress, setWorkinProgress] = useState("");
   const [lis, setLis] = useState([]);
 
-  const [editingIndex, setEditingIndex] = useState(-1);
+  const [editingIndex, setEditingIndex] = useState("");
   const [editValue, setEditValue] = useState("");
 
   function handleChange(e) {
@@ -60,7 +60,7 @@ export default function InProgress({ item }) {
       i === index ? editValue : item
     );
     setLis(editedData);
-    setEditingIndex(-1);
+    setEditingIndex("");
     setEditValue("");
     localStorage.setItem("Task_In_Progress", JSON.stringify(editedData));
   }
@@ -121,7 +121,7 @@ export default function InProgress({ item }) {
                         onClick={() => handleEditSave(index)}
                         className={styles.delButton}
                       >
-                        Save
+                        <RiSave3Fill/>
                       </button>
                     </>
                   ) : (
