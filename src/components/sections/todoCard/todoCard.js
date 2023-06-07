@@ -11,6 +11,8 @@ import { v4 as uuidv4 } from "uuid";
 export default function InProgress() {
   const[wantToSeeList,setWantToSeeList]=useState(false)
   //const[moreAdd,setMoreAdd]=useState(false)
+  const[moreAdd,setMoreAdd]=useState(false)
+  const[head,setHead]=useState("")
     const[workinProgress,setWorkinProgress]=useState("")
     const[lis,setLis]=useState([])
     function handleChange(e){
@@ -22,7 +24,7 @@ export default function InProgress() {
     function handleToDelete(indexNum){
       const filteredData=lis.filter((ele,index)=>index!==indexNum);
         setLis(filteredData);
-        localStorage.setItem("Task_To_Do",filteredData)
+        localStorage.setItem("Task_To_Do",JSON.stringify(filteredData))
         
 
     }
@@ -38,10 +40,10 @@ export default function InProgress() {
         alert("Already")
         setWorkinProgress("")
       }
-      else{const data=[workinProgress,...lis]
+      else{const data=[...lis,workinProgress]
       setLis(data)
       setWorkinProgress("")
-      localStorage.setItem("Task_To_Do",data)
+      localStorage.setItem("Task_To_Do",JSON.stringify(data))
       }   
 
     }
@@ -55,14 +57,29 @@ export default function InProgress() {
           alert("Already")
           setWorkinProgress("")
         }
-        else{const data=[workinProgress,...lis]
+        else{const data=[...lis,workinProgress]
         setLis(data)
         setWorkinProgress("")
-        localStorage.setItem("Task_To_Do",data)
+        localStorage.setItem("Task_To_Do",JSON.stringify(data))
         }   
   
 
       }
+    }
+    function handleHead(e){
+
+      setHead(e.target.value)
+    }
+    function handleheader(){
+      
+      setMoreAdd(!moreAdd)
+    }
+    function handleEnterhead(e){
+      if(e.keyCode===13){
+        setMoreAdd(!moreAdd)
+      }
+
+
     }
   return (
     <div className={styles.main} >
@@ -77,10 +94,9 @@ export default function InProgress() {
       <BsPersonWorkspace className={styles.logo}/>
         <div className={styles.container1}>
               
-      <input placeholder="    To Do "
-      className={styles.field1}
-      />
-      <button className={styles.moreoption}><SlOptions/></button>
+        {!moreAdd?  <div><input placeholder="    To Do " onChange={handleHead} value={head} onKeyDown={handleEnterhead} className={styles.field1}></input>
+      <button className={styles.moreoption} onClick={handleheader}><SlOptions/></button></div>:
+      <h1 className={styles.header}>{head}</h1>}
       </div>
 
         <span className={styles.taskContainer}>

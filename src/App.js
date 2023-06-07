@@ -28,9 +28,12 @@ function App() {
       <TodoCard />
       </div>
       {show1 && (
-        <div > 
+        <div onClick={handleClick2} className='content1'> 
       <InProgress/> 
-      <TaskDone/>
+      {show2 &&(
+        <div>
+      <TaskDone />
+      </div>)}
 
       </div>
 

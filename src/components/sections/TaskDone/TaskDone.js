@@ -5,12 +5,14 @@ import {RiDeleteBin5Fill} from "react-icons/ri"
 import {BiCommentAdd} from "react-icons/bi" 
 import { ClockLoader } from 'react-spinners'
 import {MdCloudDone} from "react-icons/md"
-import { v4 as uuidv4 } from "uuid";
+import {  v4 as uuidv4 } from "uuid";
 
 
 export default function TaskDone() {
   const[wantToSeeList,setWantToSeeList]=useState(false)
   //const[moreAdd,setMoreAdd]=useState(false)
+  const[moreAdd,setMoreAdd]=useState(false)
+  const[head,setHead]=useState("")
     const[workinProgress,setWorkinProgress]=useState("")
     const[lis,setLis]=useState([])
     function handleChange(e){
@@ -22,7 +24,7 @@ export default function TaskDone() {
     function handleToDelete(indexNum){
       const filteredData=lis.filter((ele,index)=>index!==indexNum);
         setLis(filteredData);
-        localStorage.setItem("Task_Completed",filteredData)
+        localStorage.setItem("Task_Completed",JSON.stringify(filteredData))
         
 
     }
@@ -38,10 +40,10 @@ export default function TaskDone() {
         alert("Already")
         setWorkinProgress("")
       }
-      else{const data=[workinProgress,...lis]
+      else{const data=[...lis,workinProgress]
       setLis(data)
       setWorkinProgress("")
-      localStorage.setItem("Task_Completed",data)
+      localStorage.setItem("Task_Completed",JSON.stringify(data))
       }   
 
     }
@@ -55,14 +57,29 @@ export default function TaskDone() {
           alert("Already")
           setWorkinProgress("")
         }
-        else{const data=[workinProgress,...lis]
+        else{const data=[...lis,workinProgress]
         setLis(data)
         setWorkinProgress("")
-        localStorage.setItem("Task_Completed",data)
+        localStorage.setItem("Task_Completed",JSON.stringify(data))
         }   
   
 
       }
+    }
+    function handleHead(e){
+
+      setHead(e.target.value)
+    }
+    function handleheader(){
+      
+      setMoreAdd(!moreAdd)
+    }
+    function handleEnterhead(e){
+      if(e.keyCode===13){
+        setMoreAdd(!moreAdd)
+      }
+
+
     }
   return (
     <div className={styles.main} >
@@ -70,15 +87,16 @@ export default function TaskDone() {
      { !wantToSeeList ?<div className={styles.bluff_container}>
      <button className={styles.bluffbutton} onClick={handleToView}>Add a List</button>
      <br/>
-     <ClockLoader color="#36d7b7" className={styles.clock} />
+     <ClockLoader color="blue" className={styles.clock} />
      </div>
      :
      <div className={styles.container}>
       <MdCloudDone className={styles.logo}/>
       
         <div className={styles.container1}>    
-      <input placeholder="    Task Done " className={styles.field1}></input>
-      <button className={styles.moreoption}><SlOptions/></button>
+        {!moreAdd?  <div><input placeholder="    Task Done " onChange={handleHead} value={head} onKeyDown={handleEnterhead} className={styles.field1}></input>
+      <button className={styles.moreoption} onClick={handleheader}><SlOptions/></button></div>:
+      <h1>{head}</h1>}
       </div>
 
         <span className={styles.taskContainer}>

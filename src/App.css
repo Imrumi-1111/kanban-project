@@ -4,6 +4,15 @@ body{
 } 
 .content{
   display: flex;
-  justify-content: space-evenly;
+  gap:2rem;
+  margin-left: 2rem;
+  
   margin-top: 2rem;
+}
+.content1{
+  display: flex;
+  gap:2rem;
+  
+     
+  
 }
