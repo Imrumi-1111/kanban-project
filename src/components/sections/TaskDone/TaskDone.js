@@ -98,12 +98,12 @@ export default function TaskDone({ item }) {
           <MdCloudDone className={styles.logo} />
 
           <div className={styles.container1}>
-          <Link to="/details/item3">
+         
             <input
               placeholder="    Task Done "
               className={styles.field1}
             />
-            </Link>
+            
             <button className={styles.moreoption}>
               <SlOptions />
             </button>
@@ -130,7 +130,7 @@ export default function TaskDone({ item }) {
                     </>
                   ) : (
                     <>
-                      <p className={styles.singleTask}>{ele}</p>
+                      <p className={styles.singleTask}><Link to="/details/item3" className={styles.singleTask}>{ele}</Link></p>
                       <GrEdit
                         onClick={() => handleEdit(index)}
                         className={styles.editButton}

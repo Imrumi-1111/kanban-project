@@ -120,7 +120,7 @@ export default function InProgress({ item }) {
               return (
                 
                 <div key={uuidv4()} className={styles.singleTaskContainer}>
-                  <Link to="/details/item2"></Link>
+                  
                   {editingIndex === index ? (
                     
                     <>
@@ -130,6 +130,7 @@ export default function InProgress({ item }) {
                         value={editValue}
                         onChange={handleEditChange}
                       />
+                     
                       
                       <button
                         onClick={() => handleEditSave(index)}
@@ -137,10 +138,11 @@ export default function InProgress({ item }) {
                       >
                         <RiSave3Fill/>
                       </button>
+                      
                     </>
                   ) : (
                     <>
-                      <p className={styles.singleTask}>{ele}</p>
+                      <p className={styles.singleTask}><Link to="/details/item2" className={styles.singleTask}>{ele}</Link></p>
                       <GrEdit
                         onClick={() => handleEdit(index)}
                         className={styles.editButton}

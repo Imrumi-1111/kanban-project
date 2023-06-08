@@ -217,6 +217,7 @@
 .singleTask {
   width: 180px;
   margin: auto;
+  text-decoration: none;
 }
 .bluff_container {
   display: flex;
